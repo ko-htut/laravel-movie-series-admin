@@ -26,7 +26,7 @@ class Seriale extends Model implements HasMedia
 
     public function sezones()
     {
-        return $this->hasMany(Sezone::class);
+        return $this->hasMany(Sezone::class)->latest();
     }
 
     public function registerMediaCollections()

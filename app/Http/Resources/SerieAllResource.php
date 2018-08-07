@@ -14,6 +14,12 @@ class SerieAllResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'poster_url' => 'http://movie.test' . $this->getFirstMediaUrl('SerialePoster'),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }

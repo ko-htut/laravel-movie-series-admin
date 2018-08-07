@@ -19,6 +19,11 @@ class Episode extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function season()
+    {
+        return $this->belongsTo(Sezone::class);
+    }
+
     public function embeds()
     {
         return $this->morphMany(Embed::class, 'embedable');

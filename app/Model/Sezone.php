@@ -19,7 +19,7 @@ class Sezone extends Model implements HasMedia
 
     public function episodes()
     {
-        return $this->hasMany(Episode::class);
+        return $this->hasMany(Episode::class)->latest();
     }
     public function registerMediaCollections()
     {

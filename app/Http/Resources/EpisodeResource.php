@@ -14,6 +14,15 @@ class EpisodeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'season' => $this->season,
+            'embeds' => $this->embeds,
+            'shikolinks' => $this->shikolinks,
+            'shkarkolinks' => $this->shkarkolinks,
+            'trailerlinks' => $this->trailerlinks
+        ];
     }
 }

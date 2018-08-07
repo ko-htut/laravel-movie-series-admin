@@ -14,6 +14,13 @@ class MovieAllResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+
+            'title' => $this->title,
+            'release_date' => $this->release_date,
+            'slug' => $this->slug,
+            'genres' => GenreAllResource::collection($this->genres),
+            'poster_url' => 'http://movie.test' . $this->getFirstMediaUrl('poster')
+        ];
     }
 }

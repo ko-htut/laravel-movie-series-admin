@@ -21,8 +21,7 @@ class Genre extends Model
     }
     public function movies()
     {
-        return $this->belongsToMany(Movie::class)
-            ->withTimestamps();
+        return $this->belongsToMany(Movie::class)->latest();
     }
     public function setGenreTypeAttribute($value)
     {

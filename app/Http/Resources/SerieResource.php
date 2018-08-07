@@ -14,6 +14,10 @@ class SerieResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'seasons' => SeasonAllResource::collection($this->sezones)
+        ];
     }
 }

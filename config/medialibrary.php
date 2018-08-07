@@ -3,9 +3,9 @@
 return [
 
     /*
-     * The disk on which to store added files and derived images by default. Choose
-     * one or more of the disks you've configured in config/filesystems.php.
-     */
+ * The disk on which to store added files and derived images by default. Choose
+ * one or more of the disks you've configured in config/filesystems.php.
+ */
     'disk_name' => 'public',
 
     /*
@@ -27,20 +27,20 @@ return [
 
     's3' => [
         /*
-         * The domain that should be prepended when generating urls.
-         */
-        'domain' => 'https://'.env('AWS_BUCKET').'.s3.amazonaws.com',
+     * The domain that should be prepended when generating urls.
+     */
+        'domain' => 'https://' . env('AWS_BUCKET') . '.s3.amazonaws.com',
     ],
 
     'remote' => [
         /*
-         * Any extra headers that should be included when uploading media to
-         * a remote disk. Even though supported headers may vary between
-         * different drivers, a sensible default has been provided.
-         *
-         * Supported by S3: CacheControl, Expires, StorageClass,
-         * ServerSideEncryption, Metadata, ACL, ContentEncoding
-         */
+     * Any extra headers that should be included when uploading media to
+     * a remote disk. Even though supported headers may vary between
+     * different drivers, a sensible default has been provided.
+     *
+     * Supported by S3: CacheControl, Expires, StorageClass,
+     * ServerSideEncryption, Metadata, ACL, ContentEncoding
+     */
         'extra_headers' => [
             'CacheControl' => 'max-age=604800',
         ],
@@ -49,12 +49,12 @@ return [
     'responsive_images' => [
 
         /*
-        * This class is responsible for calculating the target widths of the responsive
-        * images. By default we optimize for filesize and create variations that each are 20%
-        * smaller than the previous one. More info in the documentation.
-        *
-        * https://docs.spatie.be/laravel-medialibrary/v7/advanced-usage/generating-responsive-images
-        */
+     * This class is responsible for calculating the target widths of the responsive
+     * images. By default we optimize for filesize and create variations that each are 20%
+     * smaller than the previous one. More info in the documentation.
+     *
+     * https://docs.spatie.be/laravel-medialibrary/v7/advanced-usage/generating-responsive-images
+     */
         'width_calculator' => Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator::class,
 
         /*
@@ -74,7 +74,7 @@ return [
      * When urls to files get generated, this class will be called. Leave empty
      * if your files are stored locally above the site root or on s3.
      */
-    'url_generator' => null,
+    'url_generator' => '',
 
     /*
      * The class that contains the strategy for determining a media file's path.

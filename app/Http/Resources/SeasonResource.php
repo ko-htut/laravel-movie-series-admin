@@ -14,6 +14,11 @@ class SeasonResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'sezone_nr' => $this->sezone_nr,
+            'episodes' => EpisodeAllResource::collection($this->episodes),
+            'poster_url' => 'http://movie.test' . $this->getFirstMediaUrl('SezonePoster')
+        ];
     }
 }
