@@ -16,7 +16,7 @@ class SerialeController extends Controller
      */
     public function index()
     {
-        $seriales = Seriale::paginate(10);
+        $seriales = Seriale::orderBy('created_at', 'desc')->paginate(10);
 
         return view('admin.seriale.index', compact('seriales'));
     }

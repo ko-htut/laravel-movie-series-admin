@@ -17,7 +17,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate(10);
+        $movies = Movie::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.movie.index', compact('movies'));
     }
 
@@ -47,10 +47,10 @@ class MovieController extends Controller
         $movie->release_date = $request->release_date;
         $movie->movie_description = $request->movie_description;
         $movie->save();
-        if ($request->has('genre')){
+        if ($request->has('genre')) {
             $movie->genres()->attach($request->genre);
         }
-        if ($request->has('image')){
+        if ($request->has('image')) {
             $movie->addMedia($request->image)->toMediaCollection('poster');
         }
 
@@ -88,7 +88,7 @@ class MovieController extends Controller
             'movie_description' => $request->movie_description
         ]);
         $movie->genres()->sync($request->genre);
-        if ($request->has('image')){
+        if ($request->has('image')) {
             $movie->addMedia($request->image)->toMediaCollection('poster');
         }
 
@@ -114,7 +114,7 @@ class MovieController extends Controller
         $embeds = $movie->embeds();
         $embeds->create([
             'web_name' => $request->web_name,
-            'web_url' =>  $request->web_url,
+            'web_url' => $request->web_url,
         ]);
         return back();
     }
@@ -124,7 +124,7 @@ class MovieController extends Controller
         $embeds = $movie->shikolinks();
         $embeds->create([
             'web_name' => $request->web_name,
-            'web_url' =>  $request->web_url,
+            'web_url' => $request->web_url,
         ]);
         return back();
     }
@@ -134,7 +134,7 @@ class MovieController extends Controller
         $embeds = $movie->shkarkolinks();
         $embeds->create([
             'web_name' => $request->web_name,
-            'web_url' =>  $request->web_url,
+            'web_url' => $request->web_url,
         ]);
         return back();
     }
@@ -144,7 +144,7 @@ class MovieController extends Controller
         $embeds = $movie->trailerlinks();
         $embeds->create([
             'web_name' => $request->web_name,
-            'web_url' =>  $request->web_url,
+            'web_url' => $request->web_url,
         ]);
         return back();
     }
